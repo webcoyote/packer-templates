@@ -1,0 +1,8 @@
+#!/bin/bash
+set -e          # crash on errors
+set -u          # crash on undefined variables
+set -o pipefail # crash when intermediate program in pipe fails
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+cd "$SCRIPT_DIR/centos-6.4-x86_64-netboot"
+packer build "$@" template.json
